@@ -44,6 +44,19 @@ then you can
 pip -r requirements.txt
 ```
 
+We also provide a docker container and associated compose file to ease set up of the application. To run this, just ensure that you have Docker installed and run `docker compose up`.
+
+The compose file also includes a linked MySQL database. While the compose file will spin up the database and ensure that the stored data persists past container shutdown, you must still migrate the DB and seed it. You can do so by running the following commands:
+
+```shell
+# migrate the DB
+docker exec ghminer flask db upgrade
+# seed the DB
+docker exec ghminer python3 scripts/seed_db.py
+```
+
+In the commands, `ghminer` is the preconfigured name of the container. If you change the name in the `docker-compose.yml` file, you should change the name in the commands to reflect such.
+
 ## Execution
 
 TBD
@@ -253,11 +266,13 @@ The query is defined using the Query class, and the viewer field is requested wi
 <td>
 
 ```
+
 query {
-  viewer {
-    login
-  }
+viewer {
+login
 }
+}
+
 ```
 
 </td>
@@ -984,7 +999,7 @@ def __init__(self):
 
 Source code: [queries/repository_contributors_contribution.py](https://github.com/JialinC/GitHub_GraphQL/blob/main/python_github_query/queries/repository_contributors_contribution.py)
 
-This GraphQL query is designed to retrieve the commit history of a specified author ($id) 
+This GraphQL query is designed to retrieve the commit history of a specified author ($id)
 in the default branch of a specified repository ($owner and $name).
 It returns key metrics like the total count of commits, the date each commit was authored, the number of changed files,
 additions, and deletions for each commit, along with the author's login name.
