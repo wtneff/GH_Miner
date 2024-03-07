@@ -257,7 +257,7 @@ cython_debug/
 .idea/
 
 ### VisualStudioCode ###
-.vscode/* 
+.vscode/*
 
 .DS_Store
 
@@ -289,3 +289,6 @@ dist-ssr
 
 /backend/app/services/github_query/etc/*
 /legacy_code/*
+
+# mysql db
+data/
