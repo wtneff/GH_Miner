@@ -1,6 +1,23 @@
-version: '3.8'
+version: "3.8"
 
 services:
+  ghminer:
+    build: .
+    image: ncsu/ghminer:latest
+    container_name: ghminer
+    environment:
+      DEBUG: true
+      SECRET_KEY: your_secret_key_here
+      GITHUB_OAUTH_CLIENT_ID: 918ef50cd94282d71b1b
+      GITHUB_OAUTH_CLIENT_SECRET: 9d8242fe2293c6d8784f48ee6ba6117d1cb4e748
+      # these must match the mysql params
+      MYSQL_DATABASE_USER: GH_Miner_usr
+      MYSQL_DATABASE_PASSWORD: GH_Miner_pswrd
+      MYSQL_DATABASE_DB: GH_Miner_db
+      MYSQL_DATABASE_HOST: localhost
+      SQLALCHEMY_TRACK_MODIFICATIONS: false
+    ports:
+      - "5000:5000"
   mysql:
     image: mysql:latest
     container_name: my-mysql-container
