@@ -266,13 +266,11 @@ The query is defined using the Query class, and the viewer field is requested wi
 <td>
 
 ```
-
 query {
   viewer {
     login
   }
 }
-
 ```
 
 </td>
