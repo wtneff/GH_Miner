@@ -52,7 +52,7 @@ The compose file also includes a linked MySQL database. While the compose file w
 # migrate the DB
 docker exec ghminer flask db upgrade
 # seed the DB
-docker exec ghminer python3 scripts/seed_db.py
+docker exec ghminer python -m backend.scripts.seed_db
 ```
 
 In the commands, `ghminer` is the preconfigured name of the container. If you change the name in the `docker-compose.yml` file, you should change the name in the commands to reflect such.
