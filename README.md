@@ -13,6 +13,8 @@ i.e. GITHUB_TOKEN = 'yourGitHubPAT'
 
 ## Installation
 
+(Also see [Docker](#docker) instructions)
+
 We recommend using virtual environment.
 
 ```shell
@@ -43,6 +45,8 @@ then you can
 ```shell
 pip -r requirements.txt
 ```
+
+## Docker
 
 We also provide a docker container and associated compose file to ease set up of the application. To run this, just ensure that you have Docker installed and run `docker compose up`.
 
@@ -171,7 +175,7 @@ It keeps track of pagination state, appends pagination fields to the existing fi
 provides methods to check for a next page and update the pagination state,
 and includes a method to reset the pagination state.
 
-#### NOTE: We only implemented single level pagination, as multi-level pagination behavior is not well-defined in different scenarios. For example, you want to query all the pull requests a user made to all his/her repositories. You may develop a query that retrieves all repositories of a user as the first level pagination and all pull requests to each repository as the second level pagination. However, each repository not necessarily has the same number of pull requests. We leave this to the user to decide how they want to handle their multi-level pagination.
+#### NOTE: We only implemented single level pagination, as multi-level pagination behavior is not well-defined in different scenarios. For example, you want to query all the pull requests a user made to all his/her repositories. You may develop a query that retrieves all repositories of a user as the first level pagination and all pull requests to each repository as the second level pagination. However, each repository not necessarily has the same number of pull requests. We leave this to the user to decide how they want to handle their multi-level pagination
 
 `class QueryNodePaginator(name, fields, args)`
 
@@ -637,7 +641,7 @@ UserComments represents a GraphQL query for retrieving comments made by a user. 
 The "QueryNodePaginator" field accepts two additional arguments: "$comment_type" and "$pg_size". These arguments control the type of comments to retrieve and the pagination size, respectively. The value of "$comment_type" determines the type of comments to fetch, and the value of "$pg_size" sets the number of comments to retrieve per page.
 Inside the "QueryNodePaginator" field, there are several requested fields. These fields include "totalCount" to get the total count of comments, "nodes" to retrieve the comment nodes with their body and creation timestamps, and "pageInfo" to fetch pagination information such as the end cursor and whether there are more pages available.
 
-#### NOTE: comment_type can be commitComments, gistComments, issueComments, and repositoryDiscussionComments.
+#### NOTE: comment_type can be commitComments, gistComments, issueComments, and repositoryDiscussionComments
 
 <table>
 <tr>
