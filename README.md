@@ -48,9 +48,16 @@ pip -r requirements.txt
 
 ## Docker
 
-We also provide a docker container and associated compose file to ease set up of the application. To run this, just ensure that you have Docker installed and run `docker compose up`.
+### TL;DR
 
-The compose file also includes a linked MySQL database. While the compose file will spin up the database and ensure that the stored data persists past container shutdown, you must still migrate the DB and seed it. You can do so by running the following commands:
+We also provide a docker container and associated compose file to ease set up of the application. To run this:
+
+1. Ensure that you have Docker installed
+2. Update the  GITHUB_OAUTH_CLIENT_ID and GITHUB_OAUTH_CLIENT_SECRET values in the docker-compose.yml file based on the instructions [here](https://docs.google.com/document/d/1zMVKMCVAbpJfj8GKM0A_5u3u1b818gaPrvuu072W060/edit)
+3. Optionally - add a value for the SECRET_KEY in the docker-compose.yml file. See the explanation [here](https://flask.palletsprojects.com/en/3.0.x/config/#SECRET_KEY) on secret key values.
+4. Run `docker compose up`.
+
+While the compose file will spin up the database and ensure that the stored data persists past container shutdown, you must still migrate the DB and seed it the first time it is created. You can do so by running the following commands:
 
 ```shell
 # migrate the DB
@@ -60,6 +67,12 @@ docker exec ghminer python -m backend.scripts.seed_db
 ```
 
 In the commands, `ghminer` is the preconfigured name of the container. If you change the name in the `docker-compose.yml` file, you should change the name in the commands to reflect such.
+
+### Docker Explanation
+
+The project includes a Dockerfile that builds a container named `ghservice` by copying this repository into a container running Python3.10, downloading the project requirements from the requirements.txt file, changing a few environment variables and other settings, and starting the web server that runs the GH Miner service.
+
+The docker-compose setup allows for the simplification, from the user point of view, of getting the GH Miner service up and running by providing a configuration file that does most of the heavy lifting. By running the `docker compose up` action, Docker Compose will create and configure a MySQL database for storing the data for the GH Miner service. It will then start up the GH Miner service in a separate container named `ghservice` and link it to the MySQL database.
 
 ## Execution
 
