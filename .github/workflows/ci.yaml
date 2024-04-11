@@ -1,0 +1,20 @@
+on:
+    pull_request:
+        branches:
+          - main
+
+jobs:
+    lint-and-test:
+        name: Lint and Test
+        runs-on: ubuntu
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+              with:
+                fetch-depth: 0
+
+            - name: Lint
+              uses:
+
+            - name: Run tests
+              uses: 
