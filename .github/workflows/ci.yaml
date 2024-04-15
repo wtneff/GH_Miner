@@ -6,7 +6,7 @@ on:
 jobs:
     lint-and-test:
         name: Lint and Test
-        runs-on: ubuntu
+        runs-on: ubuntu-latest
         steps:
             - name: Checkout repo
               uses: actions/checkout@v4
@@ -14,7 +14,9 @@ jobs:
                 fetch-depth: 0
 
             - name: Lint
-              uses:
+              uses: jpetrucciani/ruff-check@main
+              with:
+                path: '.'
 
-            - name: Run tests
-              uses: 
+#            - name: Run tests
+#              uses:
