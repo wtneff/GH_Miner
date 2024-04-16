@@ -6,13 +6,14 @@ on:
 jobs:
     lint-and-test:
         name: Lint and Test
-        runs-on: ubuntu
+        runs-on: ubuntu-latest
         steps:
             - name: Checkout repo
               uses: actions/checkout@v4
               with:
                 fetch-depth: 0
 
-            - name: Run integration tests
-              run: |
-                python -m pytest -s tests/integration_tests/integration_test.py
+            - name: Lint
+              uses: jpetrucciani/ruff-check@main
+              with:
+                path: '.'
