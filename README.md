@@ -74,6 +74,22 @@ The project includes a Dockerfile that builds a container named `ghservice` by c
 
 The docker-compose setup allows for the simplification, from the user point of view, of getting the GH Miner service up and running by providing a configuration file that does most of the heavy lifting. By running the `docker compose up` action, Docker Compose will create and configure a MySQL database for storing the data for the GH Miner service. It will then start up the GH Miner service in a separate container named `ghservice` and link it to the MySQL database.
 
+## Testing
+
+### Unit Testing
+
+The project has a suite of unit tests. These can be run with the command
+`python3 -m pytest`
+
+### Integration Testing
+
+There is a set of integration tests that make use of the Docker Compose
+environment. To make use of these tests, you will need to have Docker
+installed.
+
+Start the tests with the command
+`python3 -m pytest -s tests/integration_tests/integration_test.py`
+
 ## Execution
 
 TBD

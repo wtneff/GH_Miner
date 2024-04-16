@@ -17,6 +17,3 @@ jobs:
               uses: jpetrucciani/ruff-check@main
               with:
                 path: '.'
-
-#            - name: Run tests
-#              uses:
