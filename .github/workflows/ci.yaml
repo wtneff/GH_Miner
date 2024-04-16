@@ -28,4 +28,4 @@ jobs:
               run: |
                 export PYTHONPATH=${PWD}:${PWD}/backend/:${PWD}/backend/app/
                 echo $PYTHONPATH
-                python -m pytest --cov=backend tests/
+                python -m pytest --cov=.
