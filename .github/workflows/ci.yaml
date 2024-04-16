@@ -26,5 +26,5 @@ jobs:
 
             - name: Run tests
               run: |
-                export PYTHONPATH=${PWD}
+                export PYTHONPATH=${PWD}:${PWD}/backend/:${PWD}/backend/app/
                 pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
