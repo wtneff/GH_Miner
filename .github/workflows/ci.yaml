@@ -13,8 +13,6 @@ jobs:
               with:
                 fetch-depth: 0
 
-            - name: Lint
-              uses:
-
-            - name: Run tests
-              uses: 
+            - name: Run integration tests
+              run: |
+                python -m pytest -s tests/integration_tests/integration_test.py
