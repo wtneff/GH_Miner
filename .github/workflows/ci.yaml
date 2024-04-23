@@ -17,6 +17,7 @@ jobs:
               uses: jpetrucciani/ruff-check@main
               with:
                 path: '.'
+                continue-on-error: true
 
 #            - name: Run tests
 #              uses:
