@@ -13,7 +13,7 @@ def valid_token():
 
 @pytest.fixture
 def authenticator(valid_token):
-    return PersonalAccessTokenAuthenticator(token=not_valid_token)
+    return PersonalAccessTokenAuthenticator(token=valid_token)
 
 @pytest.fixture
 def github_client(authenticator):
